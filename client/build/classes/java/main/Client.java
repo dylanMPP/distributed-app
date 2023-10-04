@@ -1,5 +1,3 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 import java.net.Inet4Address;
 import java.util.Arrays;
@@ -7,7 +5,7 @@ import java.util.Scanner;
 
 public class Client {
     public static void main(String[] args) {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        Scanner reader = new Scanner(System.in);
         int sent_request = 0;
 
         try (com.zeroc.Ice.Communicator communicator = com.zeroc.Ice.Util.initialize(args, "client.cfg")) {
@@ -22,7 +20,7 @@ public class Client {
                 String username = System.getProperty("user.name");
 
                 while (!msg.equalsIgnoreCase("exit")){
-                    String user_msg = reader.readLine();
+                    String user_msg = reader.nextLine().trim();
 
                     Long start = System.currentTimeMillis();
                     sent_request += 1;
